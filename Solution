@@ -1,0 +1,98 @@
+// test task
+package com.company;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        System.out.println(getResult("stwswtpptpttpwpp","Human"));
+    }
+    public static int getResult(String way, String racename) {
+        int result;
+        int i,j,k;
+        int[] countway = new int[20];
+        int[][] matrixway = new int[4][4];
+        k=0;
+        if (racename=="Human") {
+            for (i = 0; i <= 3; i++) {
+                for (j = 0; j <= 3; j++) {
+                    if (way.charAt(k + j) == 's') {
+                        matrixway[i][j] = 5;
+                    }
+                    if (way.charAt(k + j) == 'w') {
+                        matrixway[i][j] = 2;
+                    }
+                    if (way.charAt(k + j) == 't') {
+                        matrixway[i][j] = 3;
+                    }
+                    if (way.charAt(k + j) == 'p') {
+                        matrixway[i][j] = 1;
+                    }
+                }
+                k = j + k;
+            }
+        }
+        if (racename=="Swamper") {
+            for (i = 0; i <= 3; i++) {
+                for (j = 0; j <= 3; j++) {
+                    if (way.charAt(k + j) == 's') {
+                        matrixway[i][j] = 2;
+                    }
+                    if (way.charAt(k + j) == 'w') {
+                        matrixway[i][j] = 2;
+                    }
+                    if (way.charAt(k + j) == 't') {
+                        matrixway[i][j] = 5;
+                    }
+                    if (way.charAt(k + j) == 'p') {
+                        matrixway[i][j] = 2;
+                    }
+                }
+                k = j + k;
+            }
+        }
+        if (racename=="Woodman") {
+            for (i = 0; i <= 3; i++) {
+                for (j = 0; j <= 3; j++) {
+                    if (way.charAt(k + j) == 's') {
+                        matrixway[i][j] = 3;
+                    }
+                    if (way.charAt(k + j) == 'w') {
+                        matrixway[i][j] = 3;
+                    }
+                    if (way.charAt(k + j) == 't') {
+                        matrixway[i][j] = 2;
+                    }
+                    if (way.charAt(k + j) == 'p') {
+                        matrixway[i][j] = 2;
+                    }
+                }
+                k = j + k;
+            }
+        }
+        countway[0]=matrixway[0][1]+matrixway[0][2]+matrixway[0][3]+matrixway[1][3]+matrixway[2][3]+matrixway[3][3];
+        countway[1]=matrixway[0][1]+matrixway[0][2]+matrixway[1][2]+matrixway[1][3]+matrixway[2][3]+matrixway[3][3];
+        countway[2]=matrixway[0][1]+matrixway[0][2]+matrixway[1][2]+matrixway[2][2]+matrixway[2][3]+matrixway[3][3];
+        countway[3]=matrixway[0][1]+matrixway[0][2]+matrixway[1][2]+matrixway[2][2]+matrixway[3][2]+matrixway[3][3];
+        countway[4]=matrixway[0][1]+matrixway[1][1]+matrixway[1][2]+matrixway[1][3]+matrixway[2][3]+matrixway[3][3];
+        countway[5]=matrixway[0][1]+matrixway[1][1]+matrixway[1][2]+matrixway[2][2]+matrixway[2][3]+matrixway[3][3];
+        countway[6]=matrixway[0][1]+matrixway[1][1]+matrixway[1][2]+matrixway[2][2]+matrixway[3][2]+matrixway[3][3];
+        countway[7]=matrixway[0][1]+matrixway[1][1]+matrixway[2][1]+matrixway[2][2]+matrixway[2][3]+matrixway[3][3];
+        countway[8]=matrixway[0][1]+matrixway[1][1]+matrixway[2][1]+matrixway[2][1]+matrixway[3][2]+matrixway[3][3];
+        countway[9]=matrixway[0][1]+matrixway[1][1]+matrixway[2][1]+matrixway[3][1]+matrixway[3][2]+matrixway[3][3];
+        countway[10]=matrixway[1][0]+matrixway[1][1]+matrixway[1][2]+matrixway[1][3]+matrixway[2][3]+matrixway[3][3];
+        countway[11]=matrixway[1][0]+matrixway[1][1]+matrixway[1][2]+matrixway[2][2]+matrixway[2][3]+matrixway[3][3];
+        countway[12]=matrixway[1][0]+matrixway[1][1]+matrixway[1][2]+matrixway[2][2]+matrixway[3][2]+matrixway[3][3];
+        countway[13]=matrixway[1][0]+matrixway[1][1]+matrixway[2][1]+matrixway[2][2]+matrixway[2][3]+matrixway[3][3];
+        countway[14]=matrixway[1][0]+matrixway[1][1]+matrixway[2][1]+matrixway[2][2]+matrixway[3][2]+matrixway[3][3];
+        countway[15]=matrixway[1][0]+matrixway[1][1]+matrixway[2][1]+matrixway[3][1]+matrixway[3][2]+matrixway[3][3];
+        countway[16]=matrixway[1][0]+matrixway[2][0]+matrixway[2][1]+matrixway[2][2]+matrixway[2][3]+matrixway[3][3];
+        countway[17]=matrixway[1][0]+matrixway[2][0]+matrixway[2][1]+matrixway[2][2]+matrixway[3][2]+matrixway[3][3];
+        countway[18]=matrixway[1][0]+matrixway[2][0]+matrixway[2][1]+matrixway[3][1]+matrixway[3][2]+matrixway[3][3];
+        countway[19]=matrixway[1][0]+matrixway[2][0]+matrixway[3][0]+matrixway[3][1]+matrixway[3][2]+matrixway[3][3];
+        result=countway[1];
+        for (i=1; i<20; i++){
+            result=Math.min(result,countway[i]);
+        }
+        return result;
+    }
+}
